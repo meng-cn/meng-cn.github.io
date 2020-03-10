@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Linux 远程桌面 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="项目需要在 docker 环境内运行视图程序，实现在外部观测程序运行状态。单纯的 Linux 远程桌面类似操作即可。使用的方案是远端安装 vncserver 生成虚拟桌面， 客户端使用 xtightvncviewer 监测结果。 Docker 服务端操作 启动 docker 时，添加 vnc 端口映射。 vnc 服务默认端口为5901。 1$ sudo docker run -it -p 5901">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 远程桌面">
+<meta property="og:url" content="http://yoursite.com/2020/03/10/Linux%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="项目需要在 docker 环境内运行视图程序，实现在外部观测程序运行状态。单纯的 Linux 远程桌面类似操作即可。使用的方案是远端安装 vncserver 生成虚拟桌面， 客户端使用 xtightvncviewer 监测结果。 Docker 服务端操作 启动 docker 时，添加 vnc 端口映射。 vnc 服务默认端口为5901。 1$ sudo docker run -it -p 5901">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-10T11:47:01.000Z">
+<meta property="article:modified_time" content="2020-03-10T13:06:13.077Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Linux远程桌面" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/10/Linux%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/" class="article-date">
+  <time datetime="2020-03-10T11:47:01.000Z" itemprop="datePublished">2020-03-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux 远程桌面
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>项目需要在 docker 环境内运行视图程序，实现在外部观测程序运行状态。<br>单纯的 Linux 远程桌面类似操作即可。<br>使用的方案是远端安装 vncserver 生成虚拟桌面， 客户端使用 xtightvncviewer 监测结果。</p>
+<h2 id="Docker-服务端操作"><a href="#Docker-服务端操作" class="headerlink" title="Docker 服务端操作"></a>Docker 服务端操作</h2><ul>
+<li><p>启动 docker 时，添加 vnc 端口映射。 vnc 服务默认端口为5901。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker run -it -p 5901:5901</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 xfce 桌面环境, vnc 服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt install xfce4 xfce4-goodies tightvncserver</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 vncserver, 设置密码，生成初始化配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vncserver</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭 vnc 服务，修改配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vncserver -kill :1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用以下配置覆写 ~/.vnc/xstartup 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">xrdb $HOME&#x2F;.Xresources</span><br><span class="line">startxfce4 &amp;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启 vnc 服务。成功启动后，会打印虚拟显示器地址： new X desktop is 9asfdsfasf8:1， 将这个地址设置到环境变量里。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vncserver</span><br><span class="line">$ export DISPLAY&#x3D;9asfdsfasf8:1</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="客户端操作"><a href="#客户端操作" class="headerlink" title="客户端操作"></a>客户端操作</h2><ul>
+<li>安装 xtightvncviewer 访问 IP:port， 输入启动vncserver时设置的密码即可<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ apt install xtightvncviewer</span><br><span class="line">$ xtightvncviewer 127.0.0.1:5901</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p>参考 <a href="https://cloud.tencent.com/developer/artile/1350304" target="_blank" rel="noopener">文章</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/10/Linux%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/" data-id="ck7ltxnnh000184w5fl0d6ujt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/10/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/10/Linux%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/">Linux 远程桌面</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/10/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
