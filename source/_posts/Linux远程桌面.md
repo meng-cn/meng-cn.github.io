@@ -1,9 +1,15 @@
 ---
 title: Linux 远程桌面
 date: 2020-03-10 19:47:01
-tags: 
+tags:
+- linux
+- docker
+categories: 
+- linux
+- remote display
 ---
 项目需要在 docker 环境内运行视图程序，实现在外部观测程序运行状态。
+
 单纯的 Linux 远程桌面类似操作即可。
 
 如本地启动 docker, 启动项加 -e DISPLAY=unix$DISPLAY 可以映射外部显示器到 docker.
