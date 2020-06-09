@@ -18,7 +18,8 @@ categories:
 
 <!-- more -->
 
-## Docker 服务端操作
+Docker 服务端操作
+-----
 * 启动 docker 时，添加 vnc 端口映射。 vnc 服务默认端口为5901。
 ```
 $ sudo docker run -it -p 5901:5901
@@ -52,7 +53,8 @@ $ vncserver
 $ export DISPLAY=9asfdsfasf8:1
 ```
 
-## 客户端操作
+客户端操作
+-----
 
 * 安装 xtightvncviewer 访问 IP:port， 输入启动vncserver时设置的密码即可
 ```
