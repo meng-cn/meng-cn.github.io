@@ -10,6 +10,8 @@ tags:
 
 使用的方案是远端安装 vncserver 生成虚拟桌面， 客户端使用 xtightvncviewer 监测结果。
 
+<!-- more -->
+
 ## Docker 服务端操作
 * 启动 docker 时，添加 vnc 端口映射。 vnc 服务默认端口为5901。
 ```

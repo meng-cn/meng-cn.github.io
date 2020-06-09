@@ -4,6 +4,7 @@ date: 2020-06-09 21:38:37
 tags: android canvas paint
 ---
 ### paint 设置透明度是修改当前颜色的透明度值，后设置32位颜色会覆盖透明度设置
+<!-- more -->
 
 ```
 // right
