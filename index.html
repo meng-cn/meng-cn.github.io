@@ -86,7 +86,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>项目需要在 docker 环境内运行视图程序，实现在外部观测程序运行状态。<br>单纯的 Linux 远程桌面类似操作即可。<br>使用的方案是远端安装 vncserver 生成虚拟桌面， 客户端使用 xtightvncviewer 监测结果。</p>
+        <p>项目需要在 docker 环境内运行视图程序，实现在外部观测程序运行状态。<br>单纯的 Linux 远程桌面类似操作即可。</p>
+<p>如本地启动 docker, 启动项加 -e DISPLAY=unix$DISPLAY 可以映射外部显示器到 docker.</p>
+<p>使用的方案是远端安装 vncserver 生成虚拟桌面， 客户端使用 xtightvncviewer 监测结果。</p>
 <h2 id="Docker-服务端操作"><a href="#Docker-服务端操作" class="headerlink" title="Docker 服务端操作"></a>Docker 服务端操作</h2><ul>
 <li><p>启动 docker 时，添加 vnc 端口映射。 vnc 服务默认端口为5901。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker run -it -p 5901:5901</span><br></pre></td></tr></table></figure>
@@ -118,7 +120,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://meng-cn.github.io/blog/2020/03/10/Linux%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/" data-id="ck7m64iki00001kunfrp40ec1" class="article-share-link">Share</a>
+      <a data-url="https://meng-cn.github.io/blog/2020/03/10/Linux%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/" data-id="ckb7zc8rq00005uu7c7wy6ut0" class="article-share-link">Share</a>
       
       
     </footer>
