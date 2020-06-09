@@ -7,15 +7,15 @@
   
   <title>Android Paint 透明度 | Meng の Blog.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="paint 设置透明度是修改当前颜色的透明度值，后设置32位颜色会覆盖透明度设置123456789&#x2F;&#x2F; rightPaint paint &#x3D; new Paint();paint.setColor(0xffffffff);paint.setAlpha(123);&#x2F;&#x2F; wrong, alpha will be reset.Paint paint &amp;#x">
+  <meta name="description" content="paint 设置透明度是修改当前颜色的透明度值，后设置32位颜色会覆盖透明度设置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Paint 透明度">
 <meta property="og:url" content="https://meng-cn.github.io/blog/2020/06/09/android-canvas/index.html">
 <meta property="og:site_name" content="Meng の Blog.">
-<meta property="og:description" content="paint 设置透明度是修改当前颜色的透明度值，后设置32位颜色会覆盖透明度设置123456789&#x2F;&#x2F; rightPaint paint &#x3D; new Paint();paint.setColor(0xffffffff);paint.setAlpha(123);&#x2F;&#x2F; wrong, alpha will be reset.Paint paint &amp;#x">
+<meta property="og:description" content="paint 设置透明度是修改当前颜色的透明度值，后设置32位颜色会覆盖透明度设置">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-09T21:38:37.000Z">
-<meta property="article:modified_time" content="2020-06-09T14:08:02.188Z">
+<meta property="article:modified_time" content="2020-06-09T14:46:21.324Z">
 <meta property="article:author" content="Meng Li">
 <meta property="article:tag" content="android canvas paint">
 <meta name="twitter:card" content="summary">
@@ -89,13 +89,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="paint-设置透明度是修改当前颜色的透明度值，后设置32位颜色会覆盖透明度设置"><a href="#paint-设置透明度是修改当前颜色的透明度值，后设置32位颜色会覆盖透明度设置" class="headerlink" title="paint 设置透明度是修改当前颜色的透明度值，后设置32位颜色会覆盖透明度设置"></a>paint 设置透明度是修改当前颜色的透明度值，后设置32位颜色会覆盖透明度设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; right</span><br><span class="line">Paint paint &#x3D; new Paint();</span><br><span class="line">paint.setColor(0xffffffff);</span><br><span class="line">paint.setAlpha(123);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; wrong, alpha will be reset.</span><br><span class="line">Paint paint &#x3D; new Paint();</span><br><span class="line">paint.setAlpha(123);</span><br><span class="line">paint.setColor(0xffffffff);</span><br></pre></td></tr></table></figure>
+        <h3 id="paint-设置透明度是修改当前颜色的透明度值，后设置32位颜色会覆盖透明度设置"><a href="#paint-设置透明度是修改当前颜色的透明度值，后设置32位颜色会覆盖透明度设置" class="headerlink" title="paint 设置透明度是修改当前颜色的透明度值，后设置32位颜色会覆盖透明度设置"></a>paint 设置透明度是修改当前颜色的透明度值，后设置32位颜色会覆盖透明度设置</h3><a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; right</span><br><span class="line">Paint paint &#x3D; new Paint();</span><br><span class="line">paint.setColor(0xffffffff);</span><br><span class="line">paint.setAlpha(123);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; wrong, alpha will be reset.</span><br><span class="line">Paint paint &#x3D; new Paint();</span><br><span class="line">paint.setAlpha(123);</span><br><span class="line">paint.setColor(0xffffffff);</span><br></pre></td></tr></table></figure>
 
 <h2 id="source-code"><a href="#source-code" class="headerlink" title="source code"></a>source code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Helper to setColor(), that only assigns the color&#39;s alpha value,</span><br><span class="line"> * leaving its r,g,b values unchanged. Results are undefined if the alpha</span><br><span class="line"> * value is outside of the range [0..255]</span><br><span class="line"> *</span><br><span class="line"> * @param a set the alpha component [0..255] of the paint&#39;s color.</span><br><span class="line"> *&#x2F;</span><br><span class="line">public void setAlpha(int a) &#123;</span><br><span class="line">    ColorSpace cs &#x3D; Color.colorSpace(mColor);</span><br><span class="line">    float r &#x3D; Color.red(mColor);</span><br><span class="line">    float g &#x3D; Color.green(mColor);</span><br><span class="line">    float b &#x3D; Color.blue(mColor);</span><br><span class="line">    mColor &#x3D; Color.pack(r, g, b, a * (1.0f &#x2F; 255), cs);</span><br><span class="line">    nSetAlpha(mNativePaint, a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://meng-cn.github.io/blog/2020/06/09/android-canvas/" data-id="ckb801ob8000143q9e3mea3x8" class="article-share-link">Share</a>
+      <a data-url="https://meng-cn.github.io/blog/2020/06/09/android-canvas/" data-id="ckb81exvv000135n77ggw4ft3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/android-canvas-paint/" rel="tag">android canvas paint</a></li></ul>
