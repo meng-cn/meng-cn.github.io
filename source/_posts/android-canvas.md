@@ -8,7 +8,7 @@ categories:
 - canvas
 - paint
 ---
-paint.setAlpha() 修改当前 paint 颜色的透明度值，所以 paint.setColor() 也会覆盖事先设置的透明度。
+paint.setAlpha() 实际修改了当前 paint 颜色的透明度值，所以 paint.setColor() 操作也会覆盖事先设置的透明度。
 <!-- more -->
 
 Usage
