@@ -1,4 +1,4 @@
-Hexo Intro
+Post Intro
 ==== 
 
 New post
