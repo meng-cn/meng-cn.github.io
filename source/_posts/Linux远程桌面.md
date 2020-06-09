@@ -8,15 +8,12 @@ categories:
 - linux
 - remote display
 ---
-项目需要在 docker 环境内运行视图程序，实现在外部观测程序运行状态。
+项目需要在远程 docker 环境内运行需要显示图像的程序，在本地显示器上监测运行结果。
 
-单纯的 Linux 远程桌面类似操作即可。
-
-如本地启动 docker, 启动项加 -e DISPLAY=unix$DISPLAY 可以映射外部显示器到 docker.
-
-使用的方案是远端安装 vncserver 生成虚拟桌面， 客户端使用 xtightvncviewer 监测结果。
-
+使用的方案是远端安装 vncserver 生成虚拟桌面并设为默认显示， 客户端使用 xtightvncviewer 连接远端的虚拟显示器监测结果。
 <!-- more -->
+
+如果是本地启动 docker, 启动项加 -e DISPLAY=unix$DISPLAY 就可以映射外部显示器到 docker.
 
 Docker 服务端操作
 -----
