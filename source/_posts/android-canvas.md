@@ -2,9 +2,10 @@
 title: Android Paint 透明度
 date: 2020-06-09 21:38:37
 tags:
-- android
+- android paint
 categories: 
 - android
+- cv
 - canvas
 - paint
 ---
