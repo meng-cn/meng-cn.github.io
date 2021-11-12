@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="linux,docker," />
+  <meta name="keywords" content="android paint," />
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="项目需要在远程 docker 环境内运行需要显示图像的程序，在本地显示器上监测运行结果。 使用的方案是远端安装 vncserver 生成虚拟桌面并设为默认显示， 客户端使用 xtightvncviewer 连接远端的虚拟显示器监测结果。">
+<meta name="description" content="paint.setAlpha() 实际修改了当前 paint 颜色的透明度值，所以 paint.setColor() 操作也会覆盖事先设置的透明度。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux 远程桌面">
-<meta property="og:url" content="https://meng-cn.github.io/blog/2020/03/10/Linux%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/index.html">
+<meta property="og:title" content="Android Paint 透明度">
+<meta property="og:url" content="https://meng-cn.github.io/blog/2020/06/09/android-canvas/index.html">
 <meta property="og:site_name" content="Meng の Blog">
-<meta property="og:description" content="项目需要在远程 docker 环境内运行需要显示图像的程序，在本地显示器上监测运行结果。 使用的方案是远端安装 vncserver 生成虚拟桌面并设为默认显示， 客户端使用 xtightvncviewer 连接远端的虚拟显示器监测结果。">
+<meta property="og:description" content="paint.setAlpha() 实际修改了当前 paint 颜色的透明度值，所以 paint.setColor() 操作也会覆盖事先设置的透明度。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-03-10T11:47:01.000Z">
-<meta property="article:modified_time" content="2020-06-16T15:41:23.711Z">
+<meta property="article:published_time" content="2020-06-09T13:38:37.000Z">
+<meta property="article:modified_time" content="2020-06-16T15:40:32.733Z">
 <meta property="article:author" content="Meng Li">
-<meta property="article:tag" content="linux">
-<meta property="article:tag" content="docker">
+<meta property="article:tag" content="android paint">
 <meta name="twitter:card" content="summary">
 
 
@@ -121,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://meng-cn.github.io/blog/2020/03/10/Linux远程桌面/"/>
+  <link rel="canonical" href="https://meng-cn.github.io/blog/2020/06/09/android-canvas/"/>
 
 
 
 
 
-  <title>Linux 远程桌面 | Meng の Blog</title>
+  <title>Android Paint 透明度 | Meng の Blog</title>
   
 
 
@@ -244,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://meng-cn.github.io/blog/blog/2020/03/10/Linux%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/">
+    <link itemprop="mainEntityOfPage" href="https://meng-cn.github.io/blog/blog/2020/06/09/android-canvas/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Meng Li">
@@ -261,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux 远程桌面</h1>
+          <h1 class="post-title" itemprop="name headline">Android Paint 透明度</h1>
         
 
         <div class="post-meta">
@@ -273,8 +272,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-10T19:47:01+08:00">
-                2020-03-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-09T21:38:37+08:00">
+                2020-06-09
               </time>
             
 
@@ -296,8 +295,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
                   </a>
                 </span>
 
@@ -307,8 +306,30 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/linux/remote-display/" itemprop="url" rel="index">
-                    <span itemprop="name">remote display</span>
+                  <a href="/blog/categories/android/cv/" itemprop="url" rel="index">
+                    <span itemprop="name">cv</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/android/cv/canvas/" itemprop="url" rel="index">
+                    <span itemprop="name">canvas</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/android/cv/canvas/paint/" itemprop="url" rel="index">
+                    <span itemprop="name">paint</span>
                   </a>
                 </span>
 
@@ -325,8 +346,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/blog/2020/03/10/Linux%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/blog/2020/03/10/Linux%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/" itemprop="commentCount"></span>
+                <a href="/blog/2020/06/09/android-canvas/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blog/2020/06/09/android-canvas/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -354,39 +375,12 @@
       
 
       
-        <p>项目需要在远程 docker 环境内运行需要显示图像的程序，在本地显示器上监测运行结果。</p>
-<p>使用的方案是远端安装 vncserver 生成虚拟桌面并设为默认显示， 客户端使用 xtightvncviewer 连接远端的虚拟显示器监测结果。</p>
+        <p>paint.setAlpha() 实际修改了当前 paint 颜色的透明度值，所以 paint.setColor() 操作也会覆盖事先设置的透明度。</p>
 <a id="more"></a>
 
-<p>如果是本地启动 docker, 启动项加 -e DISPLAY=unix$DISPLAY 就可以映射外部显示器到 docker.</p>
-<h2 id="Docker-服务端操作"><a href="#Docker-服务端操作" class="headerlink" title="Docker 服务端操作"></a>Docker 服务端操作</h2><ul>
-<li><p>启动 docker 时，添加 vnc 端口映射。 vnc 服务默认端口为5901。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker run -it -p 5901:5901</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装 xfce 桌面环境, vnc 服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt install xfce4 xfce4-goodies tightvncserver</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动 vncserver, 设置密码，生成初始化配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vncserver</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关闭 vnc 服务，修改配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vncserver -kill :1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>用以下配置覆写 ~/.vnc/xstartup 文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">xrdb $HOME&#x2F;.Xresources</span><br><span class="line">startxfce4 &amp;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重启 vnc 服务。成功启动后，会打印虚拟显示器地址： new X desktop is 9asfdsfasf8:1， 将这个地址设置到环境变量里。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vncserver</span><br><span class="line">$ export DISPLAY&#x3D;9asfdsfasf8:1</span><br></pre></td></tr></table></figure>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; alpha will be reset.</span><br><span class="line">paint.setAlpha(alpha);</span><br><span class="line">...</span><br><span class="line">paint.setColor(color);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; keep alpha</span><br><span class="line">paint.setColor(color);</span><br><span class="line">...</span><br><span class="line">paint.setAlpha(alpha);</span><br><span class="line"></span><br><span class="line">or </span><br><span class="line"></span><br><span class="line">paint.setColor((paint.getAlpha() &lt;&lt; 24) | (color &amp; 0x00ffffff));</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<h2 id="客户端操作"><a href="#客户端操作" class="headerlink" title="客户端操作"></a>客户端操作</h2><ul>
-<li>安装 xtightvncviewer 访问 IP:port， 输入启动vncserver时设置的密码即可<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ apt install xtightvncviewer</span><br><span class="line">$ xtightvncviewer 127.0.0.1:5901</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<p>参考 <a href="https://cloud.tencent.com/developer/artile/1350304" target="_blank" rel="noopener">文章</a></p>
-
+<h2 id="Android-Source"><a href="#Android-Source" class="headerlink" title="Android Source"></a>Android Source</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* Helper to setColor(), that only assigns the color&#39;s alpha value,</span><br><span class="line">* leaving its r,g,b values unchanged. Results are undefined if the alpha</span><br><span class="line">* value is outside of the range [0..255]</span><br><span class="line">*</span><br><span class="line">* @param a set the alpha component [0..255] of the paint&#39;s color.</span><br><span class="line">*&#x2F;</span><br><span class="line">public void setAlpha(int a) &#123;</span><br><span class="line">    ColorSpace cs &#x3D; Color.colorSpace(mColor);</span><br><span class="line">    float r &#x3D; Color.red(mColor);</span><br><span class="line">    float g &#x3D; Color.green(mColor);</span><br><span class="line">    float b &#x3D; Color.blue(mColor);</span><br><span class="line">    mColor &#x3D; Color.pack(r, g, b, a * (1.0f &#x2F; 255), cs);</span><br><span class="line">    nSetAlpha(mNativePaint, a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">* Set the paint&#39;s color. Note that the color is an int containing alpha</span><br><span class="line">* as well as r,g,b. This 32bit value is not premultiplied, meaning that</span><br><span class="line">* its alpha can be any value, regardless of the values of r,g,b.</span><br><span class="line">* See the Color class for more details.</span><br><span class="line">*</span><br><span class="line">* @param color The new color (including alpha) to set in the paint.</span><br><span class="line">*&#x2F;</span><br><span class="line">public void setColor(@ColorInt int color) &#123;</span><br><span class="line">    nSetColor(mNativePaint, color);</span><br><span class="line">    mColor &#x3D; Color.pack(color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -403,9 +397,7 @@
       
         <div class="post-tags">
           
-            <a href="/blog/tags/linux/" rel="tag"># linux</a>
-          
-            <a href="/blog/tags/docker/" rel="tag"># docker</a>
+            <a href="/blog/tags/android-paint/" rel="tag"># android paint</a>
           
         </div>
       
@@ -418,14 +410,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/blog/2020/03/10/Linux%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/" rel="next" title="Linux 远程桌面">
+                <i class="fa fa-chevron-left"></i> Linux 远程桌面
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2020/06/09/android-canvas/" rel="prev" title="Android Paint 透明度">
-                Android Paint 透明度 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/2020/06/10/bitmap-nv21/" rel="prev" title="图像RGB/NV21格式互转">
+                图像RGB/NV21格式互转 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -561,7 +557,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-服务端操作"><span class="nav-number">1.</span> <span class="nav-text">Docker 服务端操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端操作"><span class="nav-number">2.</span> <span class="nav-text">客户端操作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage"><span class="nav-number">1.</span> <span class="nav-text">Usage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Source"><span class="nav-number">2.</span> <span class="nav-text">Android Source</span></a></li></ol></div>
             
 
           </div>
